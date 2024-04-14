@@ -36,7 +36,7 @@ namespace RecipeManagerPOE
                 IngQuant = double.Parse(Console.ReadLine()); // Parse the user input from string to double
                 Console.WriteLine("Enter the unit of measurement: ");
                 unit = Console.ReadLine();
-                ingredient = $"{IngQuant} {unit} of {IngName}";
+                ingredient = $"{IngQuant} {unit} of {IngName}"; //creates a string literal using string manipulation
                 IngredientsList.Add(ingredient);
             }
         }
@@ -53,7 +53,6 @@ namespace RecipeManagerPOE
 
                 StepsLists.Add(Step);
             }
-
         }
         //****************************************************************************//
         public void ResetRecipe()
