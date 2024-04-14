@@ -46,9 +46,10 @@ namespace RecipeManagerPOE
 
         }
         //****************************************************************************//
-        public static void ResetRecipe()
+        public static void ResetRecipe(Recipe recipe) //clears the StepsLists and IngredientsList
         {
-
+            recipe.IngredientsList.Clear();
+            recipe.StepsLists.Clear();
         }
         //****************************************************************************//
         public static void DisplayRecipe()
