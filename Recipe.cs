@@ -18,6 +18,8 @@ namespace RecipeManagerPOE
         public string IngName { get; set; } //the name of the ingredient
         public double IngQuant { get; set; } //variable to store quantity of ingredients used
         public string unit { get; set; } //unit of measurement used for the ingredients
+        public int NumStep { get; set; } //variable for the number of recipe steps
+        public string Step { get; set; } //variable for the step in the recipe
         public List<string> StepsLists { get; set; } = new List<string>(); //this list will be used to store the steps for the recipe
         public List<string> IngredientsList { get; set; } = new List<string>(); //array list to store the ingredients
 
@@ -41,6 +43,16 @@ namespace RecipeManagerPOE
         //****************************************************************************//
         public void AddSteps()
         {
+            Console.WriteLine("Please enter the number of steps for the recipe! ");
+            int NumStep = int.Parse(Console.ReadLine());
+
+            for(int i =0; i < NumStep; i++)
+            {
+                Console.WriteLine("Enter the recipe steps: ");
+                Step = Console.ReadLine().Trim();
+
+                StepsLists.Add(Step);
+            }
 
         }
         //****************************************************************************//
