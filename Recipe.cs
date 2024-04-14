@@ -21,6 +21,30 @@ namespace RecipeManagerPOE
         public List<string> StepsLists { get; set; } = new List<string>(); //this list will be used to store the steps for the recipe
         public List<string> IngredientsList { get; set; } = new List<string>(); //array list to store the ingredients
 
+        public void AddIngredient()
+        {
+
+        }
+        //****************************************************************************//
+        public void AddSteps()
+        {
+
+        }
+        //****************************************************************************//
+        public static void ResetRecipe()
+        {
+
+        }
+        //****************************************************************************//
+        public static void DisplayRecipe()
+        {
+
+        }
+        //****************************************************************************//
+        public static void ScaleRecipe()
+        {
+
+        }
         //****************************************************************************//
     }
 }
