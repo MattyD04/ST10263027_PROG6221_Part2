@@ -21,24 +21,22 @@ namespace RecipeManagerPOE
         public List<string> StepsLists { get; set; } = new List<string>(); //this list will be used to store the steps for the recipe
         public List<string> IngredientsList { get; set; } = new List<string>(); //array list to store the ingredients
 
-        public void AddIngredient() //method to add the ingredients for the recipe (debugged and fixed with ChatGPT)
+        public void AddIngredient()
         {
             Console.WriteLine("Please enter the number of ingredients you wish to include in this recipe!");
-            NumIng = int.Parse(Console.ReadLine()); // Parse the user input from  string to int
+            NumIng = int.Parse(Console.ReadLine()); // Parse the user input from string to int
 
-            for (int i = 0; i < NumIng; i++) //using a for loop because there is a specified number of ingredients the user is adding
+            for (int i = 0; i < NumIng; i++)
             {
                 Console.WriteLine("Enter the ingredient name: ");
                 IngName = Console.ReadLine();
                 Console.WriteLine("Enter the quantity of the ingredient: ");
-                IngQuant = double.Parse(Console.ReadLine());
+                IngQuant = double.Parse(Console.ReadLine()); // Parse the user input from string to double
                 Console.WriteLine("Enter the unit of measurement: ");
                 unit = Console.ReadLine();
-
                 ingredient = $"{IngQuant} {unit} of {IngName}";
                 IngredientsList.Add(ingredient);
             }
-
         }
         //****************************************************************************//
         public void AddSteps()
@@ -46,18 +44,18 @@ namespace RecipeManagerPOE
 
         }
         //****************************************************************************//
-        public static void ResetRecipe(Recipe recipe) //clears the StepsLists and IngredientsList
+        public void ResetRecipe()
         {
-            recipe.IngredientsList.Clear();
-            recipe.StepsLists.Clear();
+            IngredientsList.Clear();
+            StepsLists.Clear();
         }
         //****************************************************************************//
-        public static void DisplayRecipe()
+        public void DisplayRecipe()
         {
 
         }
         //****************************************************************************//
-        public static void ScaleRecipe()
+        public void ScaleRecipe()
         {
 
         }
