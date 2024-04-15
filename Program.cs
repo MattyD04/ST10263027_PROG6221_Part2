@@ -19,7 +19,7 @@ internal class Program
 
         while (!exitMenu)
         {
-            Console.ForegroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("Welcome to this cool recipe app! \nPlease select one of the options\n********************************************");
             Console.WriteLine("1) Add the ingredients for your recipe\n");
             Console.WriteLine("2) Add the steps for your recipe\n");

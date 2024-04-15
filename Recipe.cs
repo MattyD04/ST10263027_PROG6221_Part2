@@ -48,7 +48,7 @@ namespace RecipeManagerPOE
             Console.WriteLine("Please enter the number of steps for the recipe! ");
             NumStep = int.Parse(Console.ReadLine());
             Console.WriteLine("Enter the recipe steps: ");
-            for (int i =0; i < NumStep; i++)
+            for (int i = 0; i < NumStep; i++)
             {
                 Step = Console.ReadLine().Trim();
 
@@ -62,7 +62,7 @@ namespace RecipeManagerPOE
             Console.Write("Are you sure you want to clear all recipe data? (y/n) ");
             ConsoleKeyInfo userInput = Console.ReadKey();
             Console.WriteLine();
-            if (userInput.Key == ConsoleKey.Y )
+            if (userInput.Key == ConsoleKey.Y)
             {
                 IngredientsList.Clear();
                 StepsLists.Clear();
@@ -92,62 +92,73 @@ namespace RecipeManagerPOE
             Console.WriteLine("**************************");
         }
         //****************************************************************************//
-        public double ScaleUpRecipe() // this method allows the user to scale up the recipe
+        public void ScaleUpRecipe() // this method allows the user to scale up the recipe (Corrected by Claude AI)
         {
             Console.WriteLine("Select the option you want to scale your recipe up by:");
             Console.WriteLine("1) Scale up by a factor of 0.5");
             Console.WriteLine("2) Scale up by a factor of 2");
             Console.WriteLine("3) Scale up by a factor of 3");
 
-            double result;
             string choice = Console.ReadLine();
 
-            switch (choice)
+            for (int i = 0; i < IngredientsList.Count; i++)
             {
-                case "1":
-                    result = IngQuant * 0.5;
-                    break;
-                case "2":
-                    result = IngQuant * 2;
-                    break;
-                case "3":
-                    result = IngQuant * 3;
-                    break;
-                default:
-                    Console.WriteLine("Invalid choice.");
-                    return IngQuant;
+                int spaceIndex = IngredientsList[i].IndexOf(" ");
+                double quantity = double.Parse(IngredientsList[i].Substring(0, spaceIndex));
+
+                switch (choice)
+                {
+                    case "1":
+                        quantity *= 0.5;
+                        break;
+                    case "2":
+                        quantity *= 2;
+                        break;
+                    case "3":
+                        quantity *= 3;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid choice.");
+                        break;
+                }
+
+                IngredientsList[i] = $"{quantity:F2} {IngredientsList[i].Substring(spaceIndex + 1)}";
             }
-            return result;
         }
         //****************************************************************************//
-        public double ScaleDownRecipe() // this method allows the user to scale down the recipe
+        public void ScaleDownRecipe() // this method allows the user to scale down the recipe (Corrected by Claude AI)
         {
             Console.WriteLine("Select the option you want to scale your recipe down by:");
             Console.WriteLine("1) Scale down by a factor of 0.5");
             Console.WriteLine("2) Scale down by a factor of 2");
             Console.WriteLine("3) Scale down by a factor of 3");
 
-            double result;
             string choice = Console.ReadLine();
 
-            switch (choice)
+            for (int i = 0; i < IngredientsList.Count; i++)
             {
-                case "1":
-                    result = IngQuant / 0.5;
-                    break;
-                case "2":
-                    result = IngQuant / 2;
-                    break;
-                case "3":
-                    result = IngQuant / 3;
-                    break;
-                default:
-                    Console.WriteLine("Invalid choice.");
-                    return IngQuant;
+                int spaceIndex = IngredientsList[i].IndexOf(" ");
+                double quantity = double.Parse(IngredientsList[i].Substring(0, spaceIndex));
+
+                switch (choice)
+                {
+                    case "1":
+                        quantity /= 0.5;
+                        break;
+                    case "2":
+                        quantity /= 2;
+                        break;
+                    case "3":
+                        quantity /= 3;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid choice.");
+                        break;
+                }
+
+                IngredientsList[i] = $"{quantity:F2} {IngredientsList[i].Substring(spaceIndex + 1)}";
             }
-            return result;
         }
-        //****************************************************************************//
     }
 }
 //****************************************end of file***********************************************//
