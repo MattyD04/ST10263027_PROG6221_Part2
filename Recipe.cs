@@ -45,10 +45,9 @@ namespace RecipeManagerPOE
         {
             Console.WriteLine("Please enter the number of steps for the recipe! ");
             int NumStep = int.Parse(Console.ReadLine());
-
-            for(int i =0; i < NumStep; i++)
+            Console.WriteLine("Enter the recipe steps: ");
+            for (int i =0; i < NumStep; i++)
             {
-                Console.WriteLine("Enter the recipe steps: ");
                 Step = Console.ReadLine().Trim();
 
                 StepsLists.Add(Step);
@@ -66,9 +65,32 @@ namespace RecipeManagerPOE
 
         }
         //****************************************************************************//
-        public void ScaleRecipe()
+        public double ScaleUpRecipe()
         {
+            Console.WriteLine("Select the option you want to scale your recipe up by:");
+            Console.WriteLine("1) Scale up by a factor of 0.5");
+            Console.WriteLine("2) Scale up by a factor of 2");
+            Console.WriteLine("3) Scale up by a factor of 3");
 
+            double result;
+            string choice = Console.ReadLine();
+
+            switch (choice)
+            {
+                case "1":
+                    result = IngQuant * 0.5;
+                    break;
+                case "2":
+                    result = IngQuant * 2;
+                    break;
+                case "3":
+                    result = IngQuant * 3;
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice.");
+                    return IngQuant;
+            }
+            return result;
         }
         //****************************************************************************//
     }

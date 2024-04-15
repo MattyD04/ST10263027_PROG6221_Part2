@@ -18,9 +18,10 @@ internal class Program
             Console.WriteLine("1) Add the ingredients for your recipe\n");
             Console.WriteLine("2) Add the steps for your recipe\n");
             Console.WriteLine("3) Display your recipe\n");
-            Console.WriteLine("4) Scale your recipe\n");
-            Console.WriteLine("5) Reset your recipe\n");
-            Console.WriteLine("6) Exit the program");
+            Console.WriteLine("4) Scale up your recipe\n");
+            Console.WriteLine("5) Scale down your recipe\n");
+            Console.WriteLine("6) Reset your recipe\n");
+            Console.WriteLine("7) Exit the program");
 
             string choice = Console.ReadLine();
 
@@ -36,12 +37,15 @@ internal class Program
                     recipe.DisplayRecipe();
                     break;
                 case "4":
-                    recipe.ScaleRecipe();
+                    recipe.ScaleUpRecipe();
                     break;
                 case "5":
-                    recipe.ResetRecipe();
+                    recipe.ScaleDownRecipe();
                     break;
                 case "6":
+                    recipe.ResetRecipe();
+                    break;
+                case "7":
                     exitMenu = true;
                     break;
                 default:
