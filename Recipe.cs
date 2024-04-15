@@ -69,10 +69,21 @@ namespace RecipeManagerPOE
             }
         }
         //****************************************************************************//
-        public void DisplayRecipe()
+        public void DisplayRecipe() //debugged and corrected by Claude AI
         {
             Console.WriteLine("Your recipe");
-            
+            Console.WriteLine("Ingredients: ");
+            foreach (var ingredient in IngredientsList)
+            {
+                Console.WriteLine(ingredient);
+            }
+            Console.WriteLine("**************************");
+            Console.WriteLine("Steps: ");
+            for (int i = 0; i < StepsLists.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {StepsLists[i]}");
+            }
+            Console.WriteLine("**************************");
         }
         //****************************************************************************//
         public double ScaleUpRecipe()
