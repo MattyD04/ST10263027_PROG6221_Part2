@@ -21,7 +21,7 @@ namespace RecipeManagerPOE
         public List<string> StepsLists { get; set; } = new List<string>(); //this list will be used to store the steps for the recipe
         public List<string> IngredientsList { get; set; } = new List<string>(); //array list to store the ingredients
 
-        public void AddIngredient()
+        public void AddIngredient() //this method adds the ingredients to the IngredientsList
         {
             Console.WriteLine("Please enter the number of ingredients you wish to include in this recipe!");
             NumIng = int.Parse(Console.ReadLine()); // Parse the user input from string to int
@@ -39,7 +39,7 @@ namespace RecipeManagerPOE
             }
         }
         //****************************************************************************//
-        public void AddSteps()
+        public void AddSteps() //this method adds the steps to the StepsLists 
         {
             Console.WriteLine("Please enter the number of steps for the recipe! ");
             int NumStep = int.Parse(Console.ReadLine());
@@ -53,6 +53,7 @@ namespace RecipeManagerPOE
         }
         //****************************************************************************//
         public void ResetRecipe() //debugged and corrected by Claude AI
+        //this method clears all the recipe data
         {
             Console.Write("Are you sure you want to clear all recipe data? (y/n) ");
             ConsoleKeyInfo userInput = Console.ReadKey();
@@ -70,6 +71,7 @@ namespace RecipeManagerPOE
         }
         //****************************************************************************//
         public void DisplayRecipe() //debugged and corrected by Claude AI
+        // this method displays the ingredients and steps of the recipe
         {
             Console.WriteLine("Your recipe");
             Console.WriteLine("Ingredients: ");
@@ -86,7 +88,7 @@ namespace RecipeManagerPOE
             Console.WriteLine("**************************");
         }
         //****************************************************************************//
-        public double ScaleUpRecipe()
+        public double ScaleUpRecipe() // this method allows the user to scale up the recipe
         {
             Console.WriteLine("Select the option you want to scale your recipe up by:");
             Console.WriteLine("1) Scale up by a factor of 0.5");
@@ -114,7 +116,7 @@ namespace RecipeManagerPOE
             return result;
         }
         //****************************************************************************//
-        public double ScaleDownRecipe()
+        public double ScaleDownRecipe() // this method allows the user to scale down the recipe
         {
             Console.WriteLine("Select the option you want to scale your recipe down by:");
             Console.WriteLine("1) Scale down by a factor of 0.5");

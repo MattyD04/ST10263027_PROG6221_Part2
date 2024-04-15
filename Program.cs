@@ -6,11 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 /// <summary>
-/// https://www.geeksforgeeks.org/c-sharp-how-to-change-foreground-color-of-text-in-console/ 
+/// 
 /// </summary>
 internal class Program
 {
-    static void Main(string[] args)
+    static void Main(string[] args) //main method executes the code
     {
         Recipe recipe = new Recipe();
         bool exitMenu = false; // this variable acts as a flag to continue or exit the loop when set to true
