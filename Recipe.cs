@@ -54,10 +54,20 @@ namespace RecipeManagerPOE
             }
         }
         //****************************************************************************//
-        public void ResetRecipe()
+        public void ResetRecipe() //debugged and corrected by Claude AI
         {
-            IngredientsList.Clear();
-            StepsLists.Clear();
+            Console.Write("Are you sure you want to clear all recipe data? (y/n) ");
+            ConsoleKeyInfo userInput = Console.ReadKey();
+            if (userInput.Key == ConsoleKey.Y )
+            {
+                IngredientsList.Clear();
+                StepsLists.Clear();
+                Console.WriteLine("Recipe data has been cleared.");
+            }
+            else
+            {
+                Console.WriteLine("Recipe data has not been cleared.");
+            }
         }
         //****************************************************************************//
         public void DisplayRecipe()
@@ -85,6 +95,34 @@ namespace RecipeManagerPOE
                     break;
                 case "3":
                     result = IngQuant * 3;
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice.");
+                    return IngQuant;
+            }
+            return result;
+        }
+        //****************************************************************************//
+        public double ScaleDownRecipe()
+        {
+            Console.WriteLine("Select the option you want to scale your recipe down by:");
+            Console.WriteLine("1) Scale down by a factor of 0.5");
+            Console.WriteLine("2) Scale down by a factor of 2");
+            Console.WriteLine("3) Scale down by a factor of 3");
+
+            double result;
+            string choice = Console.ReadLine();
+
+            switch (choice)
+            {
+                case "1":
+                    result = IngQuant / 0.5;
+                    break;
+                case "2":
+                    result = IngQuant / 2;
+                    break;
+                case "3":
+                    result = IngQuant / 3;
                     break;
                 default:
                     Console.WriteLine("Invalid choice.");
