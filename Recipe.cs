@@ -5,7 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-
+/*
+ * References: 
+ * https://www.geeksforgeeks.org/c-sharp-how-to-change-foreground-color-of-text-in-console/
+ * https://www.geeksforgeeks.org/console-readkey-method-in-c-sharp/
+ */
 // utilised Claude AI for debugging and to mainly fix a debugging target error
 namespace RecipeManagerPOE
 {
@@ -42,7 +46,7 @@ namespace RecipeManagerPOE
         public void AddSteps() //this method adds the steps to the StepsLists 
         {
             Console.WriteLine("Please enter the number of steps for the recipe! ");
-            int NumStep = int.Parse(Console.ReadLine());
+            NumStep = int.Parse(Console.ReadLine());
             Console.WriteLine("Enter the recipe steps: ");
             for (int i =0; i < NumStep; i++)
             {
