@@ -5,6 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// <summary>
+/// https://www.geeksforgeeks.org/c-sharp-how-to-change-foreground-color-of-text-in-console/ 
+/// </summary>
 internal class Program
 {
     static void Main(string[] args)
@@ -14,6 +17,7 @@ internal class Program
 
         while (!exitMenu)
         {
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Welcome to this cool recipe app! \nPlease select one of the options\n********************************************");
             Console.WriteLine("1) Add the ingredients for your recipe\n");
             Console.WriteLine("2) Add the steps for your recipe\n");

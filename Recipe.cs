@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 
 
-/// utilised Claude AI for debugging and to mainly fix a debugging target error
-///
-///
+// utilised Claude AI for debugging and to mainly fix a debugging target error
 namespace RecipeManagerPOE
 {
     internal class Recipe
@@ -58,6 +56,7 @@ namespace RecipeManagerPOE
         {
             Console.Write("Are you sure you want to clear all recipe data? (y/n) ");
             ConsoleKeyInfo userInput = Console.ReadKey();
+            Console.WriteLine();
             if (userInput.Key == ConsoleKey.Y )
             {
                 IngredientsList.Clear();
@@ -72,7 +71,8 @@ namespace RecipeManagerPOE
         //****************************************************************************//
         public void DisplayRecipe()
         {
-
+            Console.WriteLine("Your recipe");
+            
         }
         //****************************************************************************//
         public double ScaleUpRecipe()
