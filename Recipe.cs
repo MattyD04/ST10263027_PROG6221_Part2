@@ -15,7 +15,7 @@ namespace RecipeManagerPOE
 {
     internal class Recipe
     {
-        public string ingredient { get; set; }
+        public string ingredient { get; set; }//this variable is used to create string representation of the ingredient
         public int NumIng { get; set; } //variable to store the amount of ingredients will be needed for the recipe
         public string IngName { get; set; } //the name of the ingredient
         public double IngQuant { get; set; } //variable to store quantity of ingredients used
