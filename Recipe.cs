@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -25,21 +27,31 @@ namespace RecipeManagerPOE
         public List<string> StepsLists { get; set; } = new List<string>(); //this list will be used to store the steps for the recipe
         public List<string> IngredientsList { get; set; } = new List<string>(); //array list to store the ingredients
 
-        public void AddIngredient() //this method adds the ingredients to the IngredientsList
+        public void AddIngredient() //method for adding ingredients to the recipe
         {
             Console.WriteLine("Please enter the number of ingredients you wish to include in this recipe!");
-            NumIng = int.Parse(Console.ReadLine()); // Parse the user input from string to int
-
-            for (int i = 0; i < NumIng; i++)
+            try
             {
-                Console.WriteLine("Enter the ingredient name: ");
-                IngName = Console.ReadLine();
-                Console.WriteLine("Enter the quantity of the ingredient: ");
-                IngQuant = double.Parse(Console.ReadLine()); // Parse the user input from string to double
-                Console.WriteLine("Enter the unit of measurement: ");
-                unit = Console.ReadLine();
-                ingredient = $"{IngQuant} {unit} of {IngName}"; //creates a string literal using string manipulation
-                IngredientsList.Add(ingredient);
+                NumIng = int.Parse(Console.ReadLine()); // Parse the user input from string to int
+
+                for (int i = 0; i < NumIng; i++)
+                {
+                    Console.WriteLine("Enter the ingredient name: ");
+                    IngName = Console.ReadLine();
+
+                    Console.WriteLine("Enter the quantity of the ingredient: ");
+                    IngQuant = double.Parse(Console.ReadLine()); // Parse the user input from string to double
+
+                    Console.WriteLine("Enter the unit of measurement: ");
+                    unit = Console.ReadLine();
+
+                    ingredient = $"{IngQuant} {unit} of {IngName}"; //creates a string literal using string manipulation
+                    IngredientsList.Add(ingredient);
+                }
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Please try again");
             }
         }
         //****************************************************************************//
