@@ -29,7 +29,7 @@ namespace RecipeManagerPOE
         public List<string> IngredientsList { get; set; } = new List<string>(); // List to store the ingredients
         public List<Recipe> RecipeList { get; set; } = new List<Recipe>(); // List to store the recipes
 
-        public void AddIngredient()
+        public void AddIngredient() //adds the ingredients to the ingredient list
         {
             Console.WriteLine("Please enter the recipe name:");
             RecipeName = Console.ReadLine(); // Set the RecipeName property
@@ -60,7 +60,7 @@ namespace RecipeManagerPOE
             }
         }
         //****************************************************************//
-        public void AddSteps()
+        public void AddSteps() //method to add the steps to the steps list
         {
             Console.WriteLine("Please enter the number of steps for the recipe! ");
             NumStep = int.Parse(Console.ReadLine());
