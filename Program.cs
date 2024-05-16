@@ -40,7 +40,7 @@ internal class Program
                     recipe.AddSteps();
                     break;
                 case "3":
-                    recipe.DisplayRecipe();
+                    recipe.DisplayRecipes();
                     break;
                 case "4":
                     recipe.ScaleUpRecipe();

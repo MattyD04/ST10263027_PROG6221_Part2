@@ -17,19 +17,23 @@ namespace RecipeManagerPOE
 {
     internal class Recipe
     {
-        public string ingredient { get; set; }//this variable is used to create string representation of the ingredient
-        public int NumIng { get; set; } //variable to store the amount of ingredients will be needed for the recipe
-        public string IngName { get; set; } //the name of the ingredient
-        public double IngQuant { get; set; } //variable to store quantity of ingredients used
-        public string unit { get; set; } //unit of measurement used for the ingredients
-        public int NumStep { get; set; } //variable for the number of recipe steps
-        public string Step { get; set; } //variable for the step in the recipe
-        public List<string> StepsLists { get; set; } = new List<string>(); //this list will be used to store the steps for the recipe
-        public List<string> IngredientsList { get; set; } = new List<string>(); //array list to store the ingredients
-        public List<string> RecipeList { get; set; } = new List<string>();
+        public string ingredient { get; set; } // Variable to create string representation of the ingredient
+        public int NumIng { get; set; } // Variable to store the amount of ingredients needed for the recipe
+        public string IngName { get; set; } // The name of the ingredient
+        public double IngQuant { get; set; } // Variable to store the quantity of ingredients used
+        public string unit { get; set; } // Unit of measurement used for the ingredients
+        public int NumStep { get; set; } // Variable for the number of recipe steps
+        public string Step { get; set; } // Variable for the step in the recipe
+        public string RecipeName { get; set; } // Property to store the name of the recipe
+        public List<string> StepsLists { get; set; } = new List<string>(); // List to store the steps for the recipe
+        public List<string> IngredientsList { get; set; } = new List<string>(); // List to store the ingredients
+        public List<Recipe> RecipeList { get; set; } = new List<Recipe>(); // List to store the recipes
 
-        public void AddIngredient() //method for adding ingredients to the recipe
+        public void AddIngredient()
         {
+            Console.WriteLine("Please enter the recipe name:");
+            RecipeName = Console.ReadLine(); // Set the RecipeName property
+
             Console.WriteLine("Please enter the number of ingredients you wish to include in this recipe!");
             try
             {
@@ -55,8 +59,8 @@ namespace RecipeManagerPOE
                 Console.WriteLine("Please try again");
             }
         }
-        //****************************************************************************//
-        public void AddSteps() //this method adds the steps to the StepsLists 
+        //****************************************************************//
+        public void AddSteps()
         {
             Console.WriteLine("Please enter the number of steps for the recipe! ");
             NumStep = int.Parse(Console.ReadLine());
@@ -65,7 +69,20 @@ namespace RecipeManagerPOE
             {
                 Step = Console.ReadLine().Trim();
                 StepsLists.Add(Step);
-            }
+            } 
+            Recipe newRecipe = new Recipe // Creates a new Recipe object and add it to the RecipeList
+            {
+                RecipeName = this.RecipeName,
+                IngredientsList = new List<string>(this.IngredientsList),
+                StepsLists = new List<string>(this.StepsLists)
+            };
+            RecipeList.Add(newRecipe);
+
+            // Clear the IngredientsList and StepsLists for the next recipe
+            IngredientsList.Clear();
+            StepsLists.Clear();
+
+            Console.WriteLine("Recipe saved successfully!");
         }
         //****************************************************************************//
         public void ClearRecipe() //debugged and corrected by Claude AI
@@ -86,22 +103,30 @@ namespace RecipeManagerPOE
             }
         }
         //****************************************************************************//
-        public void DisplayRecipe() //debugged and corrected by Claude AI
-        // this method displays the ingredients and steps of the recipe
+        public void DisplayRecipes()
         {
-            Console.WriteLine("Your recipe");
-            Console.WriteLine("Ingredients: ");
-            foreach (var ingredient in IngredientsList)
+            if (RecipeList.Count == 0)
             {
-                Console.WriteLine(ingredient);
+                Console.WriteLine("No recipes saved yet.");
             }
-            Console.WriteLine("**************************");
-            Console.WriteLine("Steps: ");
-            for (int i = 0; i < StepsLists.Count; i++)
+            else
             {
-                Console.WriteLine($"{i + 1}. {StepsLists[i]}");
+                for (int i = 0; i < RecipeList.Count; i++)
+                {
+                    Console.WriteLine($"Recipe {i + 1}: {RecipeList[i].RecipeName}");
+                    Console.WriteLine("Ingredients:");
+                    foreach (string ingredient in RecipeList[i].IngredientsList)
+                    {
+                        Console.WriteLine(ingredient);
+                    }
+                    Console.WriteLine("Steps:");
+                    for (int j = 0; j < RecipeList[i].StepsLists.Count; j++)
+                    {
+                        Console.WriteLine($"{j + 1}. {RecipeList[i].StepsLists[j]}");
+                    }
+                    Console.WriteLine();
+                }
             }
-            Console.WriteLine("**************************");
         }
         //****************************************************************************//
         public void ScaleUpRecipe() // this method allows the user to scale up the recipe (Corrected by Claude AI)
