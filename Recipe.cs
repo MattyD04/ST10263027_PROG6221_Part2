@@ -26,6 +26,7 @@ namespace RecipeManagerPOE
         public string Step { get; set; } //variable for the step in the recipe
         public List<string> StepsLists { get; set; } = new List<string>(); //this list will be used to store the steps for the recipe
         public List<string> IngredientsList { get; set; } = new List<string>(); //array list to store the ingredients
+        public List<string> RecipeList { get; set; } = new List<string>();
 
         public void AddIngredient() //method for adding ingredients to the recipe
         {
@@ -63,12 +64,11 @@ namespace RecipeManagerPOE
             for (int i = 0; i < NumStep; i++)
             {
                 Step = Console.ReadLine().Trim();
-
                 StepsLists.Add(Step);
             }
         }
         //****************************************************************************//
-        public void ResetRecipe() //debugged and corrected by Claude AI
+        public void ClearRecipe() //debugged and corrected by Claude AI
         //this method clears all the recipe data
         {
             Console.Write("Are you sure you want to clear all recipe data? (y/n) ");
@@ -138,38 +138,28 @@ namespace RecipeManagerPOE
             }
         }
         //****************************************************************************//
-        public void ScaleDownRecipe() // this method allows the user to scale down the recipe (Corrected by Claude AI)
+        public void ResetScale() //this method resets the scale of the recipe
         {
-            Console.WriteLine("Select the option you want to scale your recipe down by:");
-            Console.WriteLine("1) Scale down by a factor of 0.5");
-            Console.WriteLine("2) Scale down by a factor of 2");
-            Console.WriteLine("3) Scale down by a factor of 3");
+            Console.WriteLine("Resetting recipe to original values.");
 
-            string choice = Console.ReadLine();
+            // Create a new empty list to store the original ingredient values
+            List<string> originalIngredients = new List<string>();
 
+            // Iterate through the IngredientsList
             for (int i = 0; i < IngredientsList.Count; i++)
             {
                 int spaceIndex = IngredientsList[i].IndexOf(" ");
-                double quantity = double.Parse(IngredientsList[i].Substring(0, spaceIndex));
 
-                switch (choice)
-                {
-                    case "1":
-                        quantity /= 0.5;
-                        break;
-                    case "2":
-                        quantity /= 2;
-                        break;
-                    case "3":
-                        quantity /= 3;
-                        break;
-                    default:
-                        Console.WriteLine("Invalid choice.");
-                        break;
-                }
+                string originalQuantity = IngredientsList[i].Substring(0, spaceIndex);
+                string originalUnit = IngredientsList[i].Substring(spaceIndex + 1);
 
-                IngredientsList[i] = $"{quantity:F2} {IngredientsList[i].Substring(spaceIndex + 1)}";
+                string originalIngredient = $"{IngQuant} {unit} of {IngName}";
+                originalIngredients.Add(originalIngredient);
             }
+
+            IngredientsList = originalIngredients;
+
+            Console.WriteLine("Recipe has been reset to original values.");
         }
     }
 }

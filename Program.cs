@@ -25,11 +25,11 @@ internal class Program
             Console.WriteLine("2) Add the steps for your recipe\n");
             Console.WriteLine("3) Display your recipe\n");
             Console.WriteLine("4) Scale up your recipe\n");
-            Console.WriteLine("5) Scale down your recipe\n");
-            Console.WriteLine("6) Reset your recipe\n");
+            Console.WriteLine("5) Reset scale \n");
+            Console.WriteLine("6) Clear your recipe\n");
             Console.WriteLine("7) Exit the program");
 
-            string choice = Console.ReadLine();
+            string choice = Console.ReadLine().Trim();
 
             switch (choice)
             {
@@ -46,10 +46,10 @@ internal class Program
                     recipe.ScaleUpRecipe();
                     break;
                 case "5":
-                    recipe.ScaleDownRecipe();
+                    recipe.ResetScale();
                     break;
                 case "6":
-                    recipe.ResetRecipe();
+                    recipe.ClearRecipe();
                     break;
                 case "7":
                     exitMenu = true;
@@ -61,5 +61,5 @@ internal class Program
         }
     }
 }
-
+//*****************************************************end of file************************************//
 
