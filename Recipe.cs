@@ -103,7 +103,7 @@ namespace RecipeManagerPOE
             }
         }
         //****************************************************************************//
-        public void DisplayRecipes()
+        public void DisplayRecipes() //this method displays the recipes with the recipe names, ingredients and steps (debugged and corrected by Claude AI)
         {
             if (RecipeList.Count == 0)
             {
@@ -111,6 +111,8 @@ namespace RecipeManagerPOE
             }
             else
             {
+                //lambda expression to sort the recipes into alphabetical order
+                RecipeList.Sort((x, y) => string.Compare(x.RecipeName, y.RecipeName, StringComparison.OrdinalIgnoreCase));
                 for (int i = 0; i < RecipeList.Count; i++)
                 {
                     Console.WriteLine($"Recipe {i + 1}: {RecipeList[i].RecipeName}");
@@ -163,7 +165,7 @@ namespace RecipeManagerPOE
             }
         }
         //****************************************************************************//
-        public void ResetScale() //this method resets the scale of the recipe
+        public void ResetScale() //this method resets the scale of the recipe (debugged and correctted by Claude AI)
         {
             Console.WriteLine("Resetting recipe to original values.");
 

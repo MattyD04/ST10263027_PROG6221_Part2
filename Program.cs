@@ -21,7 +21,8 @@ internal class Program
         {
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("Welcome to this cool recipe app! \nPlease select one of the options\n********************************************");
-            Console.WriteLine("1) Add the ingredients for your recipe\n");
+            Console.WriteLine("Note: you are allowed to enter more than one recipe. To do this you must first complete steps 1 and 2 and then proceed \n back to step 1 to enter another recipe.");
+            Console.WriteLine("1) Enter the name of the recipe and add the ingredients\n");
             Console.WriteLine("2) Add the steps for your recipe\n");
             Console.WriteLine("3) Display your recipe\n");
             Console.WriteLine("4) Scale up your recipe\n");
