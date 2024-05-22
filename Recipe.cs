@@ -29,11 +29,14 @@ namespace RecipeManagerPOE
         public List<string> IngredientsList { get; set; } = new List<string>(); // List to store the ingredients
         public List<Recipe> RecipeList { get; set; } = new List<Recipe>(); // List to store the recipes
 
-        public void AddIngredient() //adds the ingredients to the ingredient list
+        public void SetRecipeName() //method to allow the user to enter the recipe name
         {
             Console.WriteLine("Please enter the recipe name:");
-            RecipeName = Console.ReadLine(); // Set the RecipeName property
-
+            RecipeName = Console.ReadLine().Trim();
+        }
+        //****************************************************************************//
+        public void AddIngredient() //adds the ingredients to the ingredient list
+        {
             Console.WriteLine("Please enter the number of ingredients you wish to include in this recipe!");
             try
             {
@@ -69,7 +72,7 @@ namespace RecipeManagerPOE
             {
                 Step = Console.ReadLine().Trim();
                 StepsLists.Add(Step);
-            } 
+            }
             Recipe newRecipe = new Recipe // Creates a new Recipe object and add it to the RecipeList
             {
                 RecipeName = this.RecipeName,
@@ -82,7 +85,7 @@ namespace RecipeManagerPOE
             IngredientsList.Clear();
             StepsLists.Clear();
 
-            Console.WriteLine("Recipe saved successfully!");
+            Console.WriteLine("Recipe saved successfully!\n");
         }
         //****************************************************************************//
         public void ClearRecipe() //debugged and corrected by Claude AI
@@ -165,7 +168,7 @@ namespace RecipeManagerPOE
             }
         }
         //****************************************************************************//
-        public void ResetScale() //this method resets the scale of the recipe (debugged and correctted by Claude AI)
+        public void ResetScale() //this method resets the scale of the recipe (debugged and corrected by Claude AI)
         {
             Console.WriteLine("Resetting recipe to original values.");
 
