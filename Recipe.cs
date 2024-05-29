@@ -10,7 +10,9 @@ using System.Xml.Linq;
 /*
  * References: 
  * https://www.geeksforgeeks.org/c-sharp-how-to-change-foreground-color-of-text-in-console/
- * https://www.geeksforgeeks.org/console-readkey-method-in-c-sharp/
+ * https://www.geeksforgeeks.org/console-readkey-method-in-c-sharp/ 
+ * https://www.geeksforgeeks.org/lambda-expressions-in-c-sharp/
+ * https://www.gosh.nhs.uk/conditions-and-treatments/general-health-advice-children/eat-smart/food-science/food-group-fun/
  */
 // utilised Claude AI for debugging and to mainly fix a debugging target error
 namespace RecipeManagerPOE
@@ -53,7 +55,13 @@ namespace RecipeManagerPOE
                     Console.WriteLine("Enter the unit of measurement: ");
                     unit = Console.ReadLine();
 
-                    ingredient = $"{IngQuant} {unit} of {IngName}"; //creates a string literal using string manipulation
+                    string foodGroup = GetFoodGroup(); // Calls the GetFoodGroup() method to get the food group for the ingredient
+
+                    Console.WriteLine("Enter the number of calories: "); // Prompt the user to enter the number of calories
+                    double calories = double.Parse(Console.ReadLine());
+
+                    // Create a string representation of the ingredient with all the relevant information
+                    ingredient = $"{IngQuant} {unit} of {IngName} ({foodGroup}, {calories} calories)";
                     IngredientsList.Add(ingredient);
                 }
             }
@@ -63,6 +71,39 @@ namespace RecipeManagerPOE
             }
         }
         //****************************************************************//
+
+        public string GetFoodGroup() //method to allow the user to choose the food group of an ingredient (debugged and corrected by phind ai)
+        {
+            Console.WriteLine("Select the food group for this ingredient:"); // Prompt the user to select the food group
+            Console.WriteLine("1. Protein");
+            Console.WriteLine("2. Carbohydrates");
+            Console.WriteLine("3. Dairy");
+            Console.WriteLine("4. Fruits");
+            Console.WriteLine("5. Vegetables");
+            int foodGroupChoice = int.Parse(Console.ReadLine()); // Get the user's choice for the food group
+            string foodGroup = "";
+
+            switch (foodGroupChoice) // user selection of the food group
+            {
+                case 1:
+                    foodGroup = "Protein";
+                    break;
+                case 2:
+                    foodGroup = "Carbohydrates";
+                    break;
+                case 3:
+                    foodGroup = "Dairy";
+                    break;
+                case 4:
+                    foodGroup = "Fruits";
+                    break;
+                case 5:
+                    foodGroup = "Vegetables";
+                    break;
+            }
+
+            return foodGroup; // Return the selected food group
+        }
         public void AddSteps() //method to add the steps to the steps list
         {
             Console.WriteLine("Please enter the number of steps for the recipe! ");
