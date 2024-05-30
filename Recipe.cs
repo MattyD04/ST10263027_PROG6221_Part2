@@ -19,6 +19,7 @@ namespace RecipeManagerPOE
 {
     internal class Recipe
     {
+        public delegate void CalorieNotificationHandler(double totalCalories); //delegate for a notification that tells a user a recipe has reached 300 calories
         public string ingredient { get; set; } // Variable to create string representation of the ingredient
         public int NumIng { get; set; } // Variable to store the amount of ingredients needed for the recipe
         public string IngName { get; set; } // The name of the ingredient
@@ -47,13 +48,13 @@ namespace RecipeManagerPOE
                 for (int i = 0; i < NumIng; i++)
                 {
                     Console.WriteLine("Enter the ingredient name: ");
-                    IngName = Console.ReadLine();
+                    IngName = Console.ReadLine().Trim();
 
                     Console.WriteLine("Enter the quantity of the ingredient: ");
-                    IngQuant = double.Parse(Console.ReadLine()); // Parse the user input from string to double
+                    IngQuant = double.Parse(Console.ReadLine().Trim()); // Parse the user input from string to double
 
                     Console.WriteLine("Enter the unit of measurement: ");
-                    unit = Console.ReadLine();
+                    unit = Console.ReadLine().Trim();
 
                     string foodGroup = GetFoodGroup(); // Calls the GetFoodGroup() method to get the food group for the ingredient
 
@@ -70,10 +71,10 @@ namespace RecipeManagerPOE
                 Console.WriteLine("Please try again");
             }
         }
-        //****************************************************************//
-
-        public string GetFoodGroup() //method to allow the user to choose the food group of an ingredient (debugged and corrected by phind ai)
+        //****************************************************************************//
+        public string GetFoodGroup() //method to allow the user to choose the food group of an ingredient
         {
+            Console.WriteLine();
             Console.WriteLine("Select the food group for this ingredient:"); // Prompt the user to select the food group
             Console.WriteLine("1. Protein");
             Console.WriteLine("2. Carbohydrates");
@@ -104,7 +105,21 @@ namespace RecipeManagerPOE
 
             return foodGroup; // Return the selected food group
         }
-        public void AddSteps() //method to add the steps to the steps list
+        //****************************************************************************//
+        public double CalculateTotalCalories() //method to calculate the total calories of a recipe
+        {
+            double totalCalories = 0;
+            foreach (string ingredient in IngredientsList)
+            {
+                int startIndex = ingredient.IndexOf("(") + 1;
+                int endIndex = ingredient.IndexOf(" calories)");
+                double calories = double.Parse(ingredient.Substring(startIndex, endIndex - startIndex));
+                totalCalories += calories;
+            }
+            return totalCalories;
+        }
+        //****************************************************************************//
+        public void AddSteps() //method to add the steps to the steps list (corrected by chatgpt)
         {
             Console.WriteLine("Please enter the number of steps for the recipe! ");
             NumStep = int.Parse(Console.ReadLine());
@@ -114,13 +129,18 @@ namespace RecipeManagerPOE
                 Step = Console.ReadLine().Trim();
                 StepsLists.Add(Step);
             }
-            Recipe newRecipe = new Recipe // Creates a new Recipe object and add it to the RecipeList
+
+            // Add the recipe to the RecipeList
+            Recipe newRecipe = new Recipe
             {
                 RecipeName = this.RecipeName,
                 IngredientsList = new List<string>(this.IngredientsList),
                 StepsLists = new List<string>(this.StepsLists)
             };
             RecipeList.Add(newRecipe);
+
+            double totalCalories = CalculateTotalCalories(); // Calculates and display total calories
+            Console.WriteLine($"Total Calories for {RecipeName}: {totalCalories}");
 
             // Clear the IngredientsList and StepsLists for the next recipe
             IngredientsList.Clear();

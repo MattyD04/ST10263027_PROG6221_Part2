@@ -15,6 +15,12 @@ internal class Program
     static void Main(string[] args) //main method executes the code
     {
         Recipe recipe = new Recipe();
+
+        //invokes the calorie notification that tells the user a recipe has reached 300 calories in total
+        recipe.CalorieNotification += (totalCalories) =>
+        {
+            Console.WriteLine($"Notification: The recipe has reached {totalCalories} calories.");
+        };
         bool exitMenu = false; // this variable acts as a flag to continue or exit the loop when set to true
 
         while (!exitMenu)
