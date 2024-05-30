@@ -20,6 +20,7 @@ namespace RecipeManagerPOE
     internal class Recipe
     {
         public delegate void CalorieNotificationHandler(double totalCalories); //delegate for a notification that tells a user a recipe has reached 300 calories
+        public event CalorieNotificationHandler CalorieNotification; // Event based on the CalorieNotificationHandler delegate
         public string ingredient { get; set; } // Variable to create string representation of the ingredient
         public int NumIng { get; set; } // Variable to store the amount of ingredients needed for the recipe
         public string IngName { get; set; } // The name of the ingredient
@@ -64,6 +65,12 @@ namespace RecipeManagerPOE
                     // Create a string representation of the ingredient with all the relevant information
                     ingredient = $"{IngQuant} {unit} of {IngName} ({foodGroup}, {calories} calories)";
                     IngredientsList.Add(ingredient);
+                    
+                    double totalCalories = CalculateTotalCalories(); //makes use of the delegate for the calories notification
+                    if (totalCalories >= 300)
+                    {
+                        CalorieNotification?.Invoke(totalCalories);
+                    }
                 }
             }
             catch (FormatException)
