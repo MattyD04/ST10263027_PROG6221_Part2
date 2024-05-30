@@ -28,7 +28,7 @@ namespace RecipeManagerPOE
         public string unit { get; set; } // Unit of measurement used for the ingredients
         public int NumStep { get; set; } // Variable for the number of recipe steps
         public string Step { get; set; } // Variable for the step in the recipe
-        public string RecipeName { get; set; } // Property to store the name of the recipe
+        public string RecipeName { get; set; } // Variable to store the name of the recipe
         public List<string> StepsLists { get; set; } = new List<string>(); // List to store the steps for the recipe
         public List<string> IngredientsList { get; set; } = new List<string>(); // List to store the ingredients
         public List<Recipe> RecipeList { get; set; } = new List<Recipe>(); // List to store the recipes
