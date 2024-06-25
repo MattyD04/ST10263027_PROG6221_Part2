@@ -29,14 +29,14 @@ internal class Program
             Console.WriteLine("Welcome to this cool recipe app! \nPlease select one of the options");
             Console.WriteLine("*****************************************************");
             Console.WriteLine("Note: you are allowed to enter more than one recipe. To do this, first complete steps 1,2 and \n 3 and then go to step 1 again.\n");
-            Console.WriteLine("1) Enter the name of the recipe\n");
-            Console.WriteLine("2) Add the ingredients\n");
-            Console.WriteLine("3) Add the steps for your recipe\n");
-            Console.WriteLine("4) Display your recipe\n");
-            Console.WriteLine("5) Scale up your recipe\n");
-            Console.WriteLine("6) Reset scale \n");
-            Console.WriteLine("7) Clear your recipe\n");
-            Console.WriteLine("8) Exit the program");
+            Console.WriteLine("1) Enter 1 to enter the name of the recipe\n");
+            Console.WriteLine("2) Enter 2 to add the ingredients\n");
+            Console.WriteLine("3) Enter 3 to add the steps for your recipe\n");
+            Console.WriteLine("4) Enter 4 to display your recipe\n");
+            Console.WriteLine("5) Enter 5 to scale up your recipe\n");
+            Console.WriteLine("6) Enter 6 to reset the recipe scale \n");
+            Console.WriteLine("7) Enter 7 to display your recipe\n");
+            Console.WriteLine("8) Enter 8 to exit the program");
 
             string choice = Console.ReadLine().Trim();
 
